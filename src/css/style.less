@@ -2,3 +2,39 @@ body {
   background: #ECE9E6;
   background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);
 }
+
+.movieSearchContainer {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr;
+  border: 1px solid blue;
+  width: 100%;
+}
+
+.moviePoster {
+  grid-column: 1 / span 1;
+  grid-row: 1/ span 1;
+}
+
+.movieDetails {
+  grid-column: 2 / span 1;
+  grid-row: 1/ span 1;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.movieTitle {
+  width: 100%;
+}
+
+.movieReleaseYear {
+  width: 100%;
+}
+
+.moreInfoButton {
+  align-self: flex-end;
+  margin-left: 75%;
+  margin-bottom: 3%;
+}
+
+
