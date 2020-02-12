@@ -1,6 +1,6 @@
 const defaultState = {
     description: '',
-    movieData:[],
+    movieData: null,
 };
 
 export default function SearchBarReducer (state = defaultState, action){
@@ -15,25 +15,15 @@ export default function SearchBarReducer (state = defaultState, action){
         }
         
         case 'SEARCH_MOVIE_FULFILLED': {
+            console.log(action)
             return {
                 description: '',
-                movieData: [{
-                    'Title': action.payload.Title,
-                    'Release Year': action.payload.Year,
-                    'Movie Poster': action.payload.Poster,
-                    'IMBD ID': action.payload.imbdID,
-                }],
+                movieData: payload.data.Search,
             };
         }
 
         case 'SEARCH_MOVIE_REJECTED': {
             alert(`I'm sorry, but we cant seem to find any movies matching that title in our database. Please enter a different movie title.`)
-            return {
-                ...state
-            };
-        }
-
-        case 'SEARCH_WEATHER_PENDING': {
             return {
                 ...state
             };
