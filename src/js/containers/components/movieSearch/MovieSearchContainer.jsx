@@ -3,13 +3,21 @@ import MovieSearchResults from '../MovieSearchResults'
 import {
     updateSearchBarDescription,
     searchMovies,
+    searchMovieDetails,
 } from './movieSearchActions'
+import {
+    HashRouter as Router,
+    Route,
+    Link
+  } from 'react-router-dom';
+
 
 class MovieSearchContainer extends React.Component {
     constructor(props) {
         super(props);
         this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
         this.movieSearch = this.movieSearch.bind(this);
+        this.handleMoreInfoClick = this.handleMoreInfoClick.bind(this);
     }
 
     handleDescriptionChange(event) {
@@ -21,6 +29,11 @@ class MovieSearchContainer extends React.Component {
     movieSearch() {
         const { dispatch, description } = this.props;
         dispatch(searchMovies(description));
+    }
+
+    handleMoreInfoClick(imdbID) {
+        const { dispatch } = this.props;
+        dispatch(searchMovieDetails(imdbID));
     }
     
     render() {
@@ -52,6 +65,7 @@ class MovieSearchContainer extends React.Component {
                         posterLink = {data.Poster}
                         releaseYear = {data.Year}
                         imdbID = {data.imdbID}
+                        handleMovieIdClick={this.handleMoreInfoClick}
                         />
                     )
 

@@ -21,6 +21,6 @@ export function searchMovies(description) {
 export function searchMovieDetails(movieId) {
     return {
         type: 'SEARCH_MOVIE_DETAILS',
-        payload: axios.get(`/movie/:d${movieId}`)
+        payload: axios.get(`/movie/${movieId}`)
     }
 }
