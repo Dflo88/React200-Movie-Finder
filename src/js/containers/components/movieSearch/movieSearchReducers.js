@@ -1,6 +1,7 @@
 const defaultState = {
     description: '',
     movieData: null,
+    movieDetails: '',
 };
 
 export default function SearchBarReducer (state = defaultState, action){
@@ -15,8 +16,8 @@ export default function SearchBarReducer (state = defaultState, action){
         }
         
         case 'SEARCH_MOVIE_FULFILLED': {
-            console.log(action)
             return {
+                ...state,
                 description: '',
                 movieData: payload.data.Search,
             };
@@ -27,6 +28,13 @@ export default function SearchBarReducer (state = defaultState, action){
             return {
                 ...state
             };
+        }
+
+        case 'SEARCH_MOVIE_DETAILS_FULFILLED': {
+            return {
+                ...state,
+                movieDetails: payload
+            }
         }
 
         default: {
