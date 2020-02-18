@@ -3,7 +3,7 @@ import MovieDetailContainer from './MovieDetailContainer';
 
 function mapStoreToProps(store) {
     return {
-        movieDetails: store.movieDetails.movieDetails
+        movieDetails: store.movieSearch.movieDetails
     };
 }
 

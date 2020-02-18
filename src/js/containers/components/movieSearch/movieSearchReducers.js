@@ -1,7 +1,7 @@
 const defaultState = {
     description: '',
     movieData: null,
-    movieDetails: '',
+    movieDetails: [],
 };
 
 export default function SearchBarReducer (state = defaultState, action){
@@ -33,7 +33,7 @@ export default function SearchBarReducer (state = defaultState, action){
         case 'SEARCH_MOVIE_DETAILS_FULFILLED': {
             return {
                 ...state,
-                movieDetails: payload
+                movieDetails: payload.data
             }
         }
 

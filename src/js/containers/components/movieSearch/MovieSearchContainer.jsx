@@ -40,7 +40,7 @@ class MovieSearchContainer extends React.Component {
         const { description, movieSearchResults } = this.props;
         return (
             <div>
-                <h1>Movie Search Container</h1>
+                <h1>Movie Finder</h1>
                 <div className='searchBarContainer'>
                     <input 
                     type='text' 
