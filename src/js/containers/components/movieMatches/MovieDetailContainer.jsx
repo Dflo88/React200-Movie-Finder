@@ -3,51 +3,52 @@ import {
     HashRouter as Router,
     Link
   } from 'react-router-dom';
-  import {
-    searchMovieDetails,
-  } from './movieDetailContainerActions'
 
 class MovieDetailContainer  extends React.Component {
     constructor(props) {
         super(props);
     }
     
-    componentDidMount(){
-        const { dispatch } = this.props;
-        dispatch(searchMovieDetails('tt0076759'))
-    }
-
-    
     render() {
         // console.log(this.props.movieDetails.data.Title)
-        // let moviePoster;
-        // if (this.props.movieDetails.data.Title){
-        //     moviePoster = <div className='movieDetailContainer'>
-        //     <div className='moviePosterContainer'>
-        //         <img className='moviePoster' src={this.props.movieDetails.data.Poster} alt="not working" width='200' height='300'/>
-        //     </div>
-        // </div>
-        // // }
         const { movieDetails } = this.props   
-        console.log(movieDetails) 
+        
+        let moviePoster;
+        if (movieDetails.Poster){
+            moviePoster = <div className='movieDetailContainer'>
+            <div className='moviePosterContainer'>
+                <img className='specificMovieDetailPoster' src={movieDetails.Poster} alt="not working" width='200' height='300'/>
+            </div>
+        </div>
+        }
+        
+
         return (
             <div>
-                <h1>{this.props.match.params.id}</h1>
-                <Link to='/'>
-                    <p>Go Back</p>
-                </Link>
-                {
-                    (movieDetails.Title) ? (<p>{movieDetails.Title}</p>) : (<p>false</p>)
-                }
-                {/* <div className='movieDetailContainer'>
+                <h1>Movie Finder</h1>
+                <div className='movieDetailContainer'>
                     <div className='moviePosterContainer'>
-                        <img className='moviePoster' src={this.props.movieInfo.data.Poster} alt="not working" width='200' height='300'/>
+                        <img className='specificMovieDetailPoster' src={movieDetails.Poster} alt="no movie poster available" width='200' height='300'/>
+                    </div>
+                    <div className='specificMovieDetailContainer'>
+                        <p className='specificMovieDetailTitle'><strong>{movieDetails.Title}</strong></p>
+                        <p className='specificMovieDetailBubbles'>Released {movieDetails.Year}</p>
+                        <p className='specificMovieDetailBubbles'>{movieDetails.Runtime}</p>
+                        <p className='specificMovieDetailBubbles'>{movieDetails.Genre}</p>
+                        <p className='specificMovieDetailPlot'>{movieDetails.Plot}</p>
+                        <p className='specificMovieDetailAwards'>{movieDetails.Awards}</p>
+                        <p className='specificMovieDetailScores'><strong>Metascore:</strong> {movieDetails.Metascore}</p>
+                        <p className='specificMovieDetailScores'><strong>IMDB:</strong> {movieDetails.imdbRating}</p>
+                    </div>
+                    <div>
+                        <Link to='/'>
+                            <button className='returnButton' >Go Back</button>
+                        </Link>
                     </div>
                 </div>
-                {moviePoster} */}
             </div>
         )
-    };
+    }
 }
 
 export default MovieDetailContainer;
